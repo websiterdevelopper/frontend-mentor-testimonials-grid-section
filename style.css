@@ -1,0 +1,160 @@
+/* Variables */
+:root {
+  --card-bg-1: hsl(263, 55%, 52%);
+  --card-bg-2: hsl(217, 19%, 35%);
+  --card-bg-3: hsl(219, 29%, 14%);
+  --quote-txt-color: hsl(0, 0%, 81%);
+  --body-bg: hsl(210, 46%, 95%);
+}
+
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 12px;
+}
+
+h2,
+h3 {
+  font-weight: 600;
+}
+
+p {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--body-bg);
+}
+
+/* Main */
+.grid {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+    "Daniel Daniel Daniel Daniel Daniel Daniel John John Kira Kira"
+    "Jeanette Jeanette Patrick Patrick Patrick Patrick Patrick Patrick Kira Kira";
+  grid-template-rows: auto;
+  gap: 2.125rem;
+}
+
+.grid .element {
+  padding: 2rem;
+  border-radius: 10px;
+  color: white;
+}
+
+.grid .element .person {
+  display: flex;
+  align-items: center;
+}
+
+.grid .element .person img {
+  display: block;
+  max-width: 40px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-right: 10px;
+}
+
+.grid .element .person h2 {
+  font-weight: normal;
+}
+
+.grid .element h3 {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.grid .element p {
+  color: var(--quote-txt-color);
+}
+
+.grid .element .person p {
+  color: rgb(255 255 255 / 0.5);
+}
+
+.grid .element-1 {
+  grid-area: Daniel;
+  background-color: var(--card-bg-1);
+  position: relative;
+}
+
+.grid .element-1 .quote {
+  position: relative;
+  z-index: 1;
+}
+
+.grid .element-1::after {
+  content: url("images/bg-pattern-quotation.svg");
+  position: absolute;
+  right: 15%;
+  top: 0;
+}
+
+.grid .element-2 {
+  grid-area: John;
+  background-color: var(--card-bg-2);
+}
+
+.grid .element-3 {
+  grid-area: Kira;
+}
+
+.grid .element-4 {
+  grid-area: Jeanette;
+}
+
+:is(.element-3, .element-4) {
+  background-color: white;
+  box-shadow: 0 2px 10px 0 rgb(141 133 133 / 0.3);
+}
+
+.grid :is(.element-3, .element-4) :is(h2, h3) {
+  color: var(--card-bg-2);
+}
+
+.grid :is(.element-3, .element-4) p.status {
+  color: hsl(217, 19%, 35%, 0.5);
+}
+
+.grid :is(.element-3, .element-4) .quote p {
+  color: hsl(217, 19%, 35%, 0.7);
+}
+
+.grid .element-5 {
+  grid-area: Patrick;
+  background-color: var(--card-bg-3);
+}
+
+@media (max-width: 767px) {
+  .grid {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid .element-4 {
+    order: 3;
+  }
+
+  .grid .element-5 {
+    order: 4;
+  }
+
+  .grid .element-3 {
+    order: 6;
+  }
+
+  .grid .element h3 {
+    font-size: 1.5rem;
+  }
+}
